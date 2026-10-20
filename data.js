@@ -990,5 +990,388 @@ window.YGG_BIGDATA_ITEMS = [
     "status": "ampliacion",
     "source": "Ampliación técnica · para contextualizar",
     "related": []
+  },
+  {
+    "id": "matematicas-estadistica",
+    "parent": "bigdata",
+    "title": "Matemáticas, probabilidad y estadística",
+    "short": "Medidas, distribuciones, probabilidades y simulaciones para entender los datos.",
+    "definition": "Las herramientas matemáticas permiten describir conjuntos de datos, estimar incertidumbre y evaluar resultados de experimentos.",
+    "example": "Comprobar si la media de lanzamientos de dos dados se aproxima a 7.",
+    "caution": "Los conceptos de este bloque están explicados con ejemplos; no sustituyen una demostración formal.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": []
+  },
+  {
+    "id": "estadistica-descriptiva",
+    "parent": "matematicas-estadistica",
+    "title": "Estadística descriptiva",
+    "short": "Resumen de datos mediante medidas de tendencia central y dispersión.",
+    "definition": "Describe los datos observados con medidas como media, varianza y desviación estándar.",
+    "example": "Comparar la temperatura media y su variabilidad en dos sensores.",
+    "caution": "",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": []
+  },
+  {
+    "id": "media-aritmetica",
+    "parent": "estadistica-descriptiva",
+    "title": "Media aritmética",
+    "short": "Suma de observaciones dividida entre su cantidad.",
+    "definition": "La media es la suma de los valores observados dividida entre el número de observaciones.",
+    "example": "Para 2, 4 y 6, la media es (2+4+6)/3 = 4.",
+    "caution": "La media es sensible a valores extremos.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "varianza",
+      "ley-grandes-numeros"
+    ]
+  },
+  {
+    "id": "varianza",
+    "parent": "estadistica-descriptiva",
+    "title": "Varianza",
+    "short": "Dispersión media de los datos respecto a su media, al cuadrado.",
+    "definition": "La varianza poblacional es la media de los cuadrados de las desviaciones respecto a la media: σ² = Σ(xᵢ−μ)²/N. Para estimación muestral se suele dividir entre n−1.",
+    "example": "Datos 2, 4, 6: media 4; varianza poblacional (4+0+4)/3 = 8/3.",
+    "caution": "Se expresa en unidades al cuadrado. No confundas la fórmula poblacional con la estimación muestral.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "desviacion-estandar",
+      "media-aritmetica"
+    ]
+  },
+  {
+    "id": "desviacion-estandar",
+    "parent": "estadistica-descriptiva",
+    "title": "Desviación estándar",
+    "short": "Raíz cuadrada de la varianza; dispersión en las unidades originales.",
+    "definition": "La desviación estándar es la raíz cuadrada de la varianza y resume cuánto se dispersan los valores respecto a la media.",
+    "example": "Para 2, 4 y 6, la desviación estándar poblacional es √(8/3) ≈ 1,63.",
+    "caution": "No indica por sí sola que los datos sigan una distribución normal.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "varianza"
+    ]
+  },
+  {
+    "id": "probabilidad",
+    "parent": "matematicas-estadistica",
+    "title": "Probabilidad",
+    "short": "Incertidumbre de eventos y fenómenos aleatorios.",
+    "definition": "La probabilidad cuantifica la posibilidad de que ocurra un evento dentro de un modelo; sus valores van de 0 a 1.",
+    "example": "Para una moneda justa, P(cara) = 0,5.",
+    "caution": "El resultado de una simulación finita puede diferir de la probabilidad teórica.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "ley-grandes-numeros",
+      "monte-carlo"
+    ]
+  },
+  {
+    "id": "valor-esperado",
+    "parent": "probabilidad",
+    "title": "Valor esperado o esperanza",
+    "short": "Promedio teórico ponderado por las probabilidades.",
+    "definition": "E(X) es la suma de cada resultado posible multiplicado por su probabilidad, cuando esa suma está definida.",
+    "example": "Para una moneda que vale 1 si es cara y 0 si es cruz: E(X) = 0,5.",
+    "caution": "No significa que una secuencia corta tenga exactamente esa media.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "ley-grandes-numeros",
+      "media-aritmetica"
+    ]
+  },
+  {
+    "id": "ley-grandes-numeros",
+    "parent": "probabilidad",
+    "title": "Ley de los Grandes Números",
+    "short": "La media muestral converge hacia el valor esperado bajo condiciones adecuadas.",
+    "definition": "En repeticiones independientes e idénticamente distribuidas con esperanza finita, al crecer el número de observaciones la media muestral se aproxima al valor esperado.",
+    "example": "Tras 10.000 lanzamientos de una moneda equilibrada, la proporción acumulada de caras suele acercarse a 50 %.",
+    "caution": "No garantiza resultados exactos ni predice el siguiente lanzamiento.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "valor-esperado",
+      "monte-carlo"
+    ]
+  },
+  {
+    "id": "teorema-central-limite",
+    "parent": "probabilidad",
+    "title": "Teorema Central del Límite (TCL)",
+    "short": "La distribución de medias de muestras grandes se aproxima a una normal bajo ciertas condiciones.",
+    "definition": "Para variables independientes e idénticamente distribuidas de varianza finita, la media muestral debidamente centrada y escalada tiende a una distribución normal al aumentar la muestra.",
+    "example": "Tomar muchas muestras de un proceso y estudiar el histograma de sus medias.",
+    "caution": "No dice que los datos individuales se vuelvan normales ni se cumple sin condiciones.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "media-aritmetica",
+      "varianza"
+    ]
+  },
+  {
+    "id": "monte-carlo",
+    "parent": "probabilidad",
+    "title": "Simulaciones Monte Carlo",
+    "short": "Estimación de resultados mediante muchos ensayos aleatorios.",
+    "definition": "Monte Carlo utiliza muestreo aleatorio repetido para aproximar probabilidades, integrales o propiedades de sistemas difíciles de calcular de forma directa.",
+    "example": "Simular 10.000 monedas y medir el porcentaje de caras.",
+    "caution": "La precisión depende del modelo, el tamaño muestral y la calidad del muestreo.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "ley-grandes-numeros",
+      "prng"
+    ]
+  },
+  {
+    "id": "cadenas-markov",
+    "parent": "probabilidad",
+    "title": "Cadenas de Markov",
+    "short": "Modelos de evolución entre estados mediante probabilidades de transición.",
+    "definition": "En una cadena de Markov, dado el estado presente, la distribución del siguiente estado no depende de la secuencia previa de estados.",
+    "example": "Si hoy el sistema está 'activo', su probabilidad de seguir activo mañana depende del estado actual y de la matriz de transición.",
+    "caution": "La propiedad de Markov no implica que todos los estados tengan igual probabilidad.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "transiciones-markov"
+    ]
+  },
+  {
+    "id": "transiciones-markov",
+    "parent": "cadenas-markov",
+    "title": "Estados y probabilidades de transición",
+    "short": "Cómo se pasa de un estado a otro en una cadena de Markov.",
+    "definition": "Las probabilidades de salida de cada estado se expresan en una matriz de transición cuyas filas, en la convención habitual, suman 1.",
+    "example": "Desde 'normal': 0,9 de permanecer normal y 0,1 de pasar a alerta.",
+    "caution": "Distingue probabilidad de transición de frecuencia observada; la matriz es un modelo.",
+    "status": "ampliacion",
+    "source": "Ampliación didáctica del temario · no atribuida literalmente al profesor",
+    "related": [
+      "cadenas-markov"
+    ]
+  },
+  {
+    "id": "complejidad",
+    "parent": "matematicas-estadistica",
+    "title": "Complejidad algorítmica",
+    "short": "Recursos necesarios según crece el tamaño de entrada.",
+    "definition": "Estudia cómo varían el tiempo o la memoria de un algoritmo al aumentar la cantidad de datos.",
+    "example": "Recorrer 1.000 y 10.000 registros cambia el trabajo de un bucle lineal.",
+    "caution": "",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": []
+  },
+  {
+    "id": "notacion-big-o",
+    "parent": "complejidad",
+    "title": "Notación Big O",
+    "short": "Cota asintótica superior del crecimiento de recursos.",
+    "definition": "O(f(n)) expresa una cota superior asintótica para la complejidad de un algoritmo; se usa habitualmente para comparar órdenes de crecimiento del tiempo o memoria.",
+    "example": "Un recorrido simple de n registros es O(n); dos bucles anidados completos suelen ser O(n²).",
+    "caution": "No indica segundos exactos, ni que todo O(n) sea siempre más rápido que O(n²) para entradas pequeñas.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "complejidad"
+    ]
+  },
+  {
+    "id": "sistemas-distribuidos",
+    "parent": "bigdata",
+    "title": "Sistemas distribuidos y consistencia",
+    "short": "Disponibilidad, fallos de red y lectura coherente de datos.",
+    "definition": "Varios nodos cooperan y se comunican por red; deben abordar cortes de comunicación, latencia, fallos y sincronización de información.",
+    "example": "Un servicio reparte datos entre servidores en lugares distintos.",
+    "caution": "HDFS y los sistemas distribuidos no tienen todos las mismas garantías de consistencia.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "cluster",
+      "teorema-cap"
+    ]
+  },
+  {
+    "id": "consistencia-distribuida",
+    "parent": "sistemas-distribuidos",
+    "title": "Consistencia de datos",
+    "short": "Garantías sobre lo que ven los clientes al leer y escribir datos.",
+    "definition": "La consistencia describe qué valores pueden observar las operaciones concurrentes en un sistema repartido.",
+    "example": "Dos usuarios leen una ficha actualizada desde servidores distintos.",
+    "caution": "No confundir consistencia del teorema CAP con la 'C' de ACID.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "consistencia-fuerte",
+      "consistencia-eventual",
+      "teorema-cap"
+    ]
+  },
+  {
+    "id": "consistencia-fuerte",
+    "parent": "consistencia-distribuida",
+    "title": "Consistencia fuerte",
+    "short": "Lecturas que respetan un orden coherente de escrituras.",
+    "definition": "Un ejemplo exigente es la linealizabilidad: las operaciones parecen ocurrir instantáneamente en algún punto entre su inicio y fin, respetando el orden real.",
+    "example": "Tras confirmarse una actualización de saldo, una nueva lectura ve la versión actualizada.",
+    "caution": "'Fuerte' es un término general: especifica la garantía concreta cuando compares sistemas.",
+    "status": "ampliacion",
+    "source": "Ampliación didáctica del temario · no atribuida literalmente al profesor",
+    "related": [
+      "teorema-cap",
+      "consistencia-eventual"
+    ]
+  },
+  {
+    "id": "consistencia-eventual",
+    "parent": "consistencia-distribuida",
+    "title": "Consistencia eventual",
+    "short": "Las réplicas convergen si cesan las actualizaciones y la comunicación progresa.",
+    "definition": "Tras una escritura, algunas réplicas pueden ofrecer temporalmente datos antiguos; bajo las condiciones del modelo acaban convergiendo.",
+    "example": "Un cambio de perfil tarda unos instantes en propagarse a todas las réplicas.",
+    "caution": "No garantiza que cada lectura inmediatamente posterior a escribir vea el dato nuevo.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "consistencia-fuerte",
+      "teorema-cap"
+    ]
+  },
+  {
+    "id": "teorema-cap",
+    "parent": "sistemas-distribuidos",
+    "title": "Teorema CAP",
+    "short": "Compromiso entre consistencia y disponibilidad durante una partición de red.",
+    "definition": "Si hay una partición de red, un sistema distribuido no puede garantizar simultáneamente consistencia linealizable (C) y disponibilidad para todas las peticiones (A). La P refleja la existencia de esa partición.",
+    "example": "Ante un corte entre réplicas, el sistema puede rechazar ciertas operaciones para conservar C o responder usando datos potencialmente desactualizados para priorizar A.",
+    "caution": "No es la regla literal de 'escoge dos de tres' en funcionamiento normal: el compromiso se manifiesta cuando hay particiones.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "consistencia-distribuida",
+      "consistencia-eventual"
+    ]
+  },
+  {
+    "id": "almacenamiento-compresion",
+    "parent": "bigdata",
+    "title": "Almacenamiento y compresión",
+    "short": "Representaciones que reducen tamaño y costes de almacenamiento.",
+    "definition": "Las técnicas de compresión aprovechan redundancias en secuencias y archivos; su eficacia depende de cómo sean los datos.",
+    "example": "Una secuencia con letras repetidas puede ocupar menos con una codificación de rachas.",
+    "caution": "",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": []
+  },
+  {
+    "id": "rle",
+    "parent": "almacenamiento-compresion",
+    "title": "Compresión RLE (Run-Length Encoding)",
+    "short": "Sustituye rachas repetidas por símbolo y longitud.",
+    "definition": "RLE codifica series consecutivas del mismo símbolo como una pareja de valor y número de repeticiones.",
+    "example": "AAAAABBBCC → (A,5)(B,3)(C,2).",
+    "caution": "Con símbolos poco repetidos puede ocupar lo mismo o más; el formato debe permitir decodificación inequívoca.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": []
+  },
+  {
+    "id": "experimentacion",
+    "parent": "analitica",
+    "title": "Experimentación y validación",
+    "short": "Comparación de alternativas a partir de medidas.",
+    "definition": "La experimentación permite contrastar hipótesis con métricas y una metodología que minimice sesgos.",
+    "example": "Comparar dos versiones de un botón de una página para observar conversiones.",
+    "caution": "",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": []
+  },
+  {
+    "id": "ab-testing",
+    "parent": "experimentacion",
+    "title": "A/B Testing",
+    "short": "Experimento para comparar dos variantes de manera controlada.",
+    "definition": "Se asignan unidades a grupos A y B (idealmente de forma aleatoria), se define previamente una métrica y se compara el resultado para evaluar una hipótesis.",
+    "example": "La versión A convierte el 4 % de las visitas y B el 5 %; se necesita comprobar la incertidumbre antes de concluir que B mejora.",
+    "caution": "Una diferencia observada no prueba por sí sola causalidad ni significación estadística.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "valor-esperado"
+    ]
+  },
+  {
+    "id": "cdc",
+    "parent": "ingesta",
+    "title": "CDC (Change Data Capture)",
+    "short": "Captura de cambios en datos de origen.",
+    "definition": "CDC identifica inserciones, actualizaciones y eliminaciones en una fuente para trasladarlas a sistemas posteriores sin recargar todo el conjunto.",
+    "example": "Cada pedido modificado en una base operativa produce un evento de cambio para el almacén analítico.",
+    "caution": "CDC no implica necesariamente tiempo real absoluto ni garantiza por sí solo entrega exactamente una vez.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "pipeline",
+      "etl"
+    ]
+  },
+  {
+    "id": "gobierno-datos",
+    "parent": "arquitectura",
+    "title": "Gobierno y gestión del dato",
+    "short": "Calidad, definiciones, responsabilidades y coherencia.",
+    "definition": "El gobierno del dato establece políticas y prácticas para mantener información confiable, trazable y útil entre sistemas.",
+    "example": "Unificar la definición de 'cliente activo' entre ventas y marketing.",
+    "caution": "ampliacion",
+    "status": "Ampliación didáctica del temario · no atribuida literalmente al profesor",
+    "source": [
+      "lineaje",
+      "mdm"
+    ],
+    "related": []
+  },
+  {
+    "id": "mdm",
+    "parent": "gobierno-datos",
+    "title": "MDM (Master Data Management)",
+    "short": "Gestión coherente de datos maestros.",
+    "definition": "MDM coordina entidades básicas compartidas —clientes, productos o proveedores— para reducir duplicados e incoherencias entre aplicaciones.",
+    "example": "Un mismo cliente tiene una identidad maestra coherente entre facturación y CRM.",
+    "caution": "No es una marca concreta de software ni simplemente un Data Warehouse.",
+    "status": "visto",
+    "source": "Temario de Big Data · clase y material del 19/10/2026",
+    "related": [
+      "calidad",
+      "gobierno-datos"
+    ]
+  },
+  {
+    "id": "anomalias-sensores",
+    "parent": "analitica",
+    "title": "Detección de anomalías en sensores",
+    "short": "Registros fuera de los rangos definidos como normales.",
+    "definition": "En una práctica de simulación, se generan lecturas sintéticas y se señalan aquellas que exceden umbrales prefijados.",
+    "example": "10.000 sensores × 24 horas = 240.000 observaciones; se pueden inyectar anomalías en un 1 % de ellas.",
+    "caution": "Los datos son simulados: superar un umbral de ejemplo no equivale a detectar una avería real.",
+    "status": "visto",
+    "source": "Práctica de simulación de sensores · 19/10/2026",
+    "related": [
+      "monte-carlo",
+      "semilla"
+    ]
   }
 ];
