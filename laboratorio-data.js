@@ -160,5 +160,41 @@ window.YGG_LAB = [
     "cmd": "docker stop hadoop",
     "desc": "Ejecuta este comando desde PowerShell, no dentro del contenedor.",
     "tone": "host"
+  },
+  {
+    "id": "stat1",
+    "group": "estadistica",
+    "context": "Python · Google Colab",
+    "title": "10.000 monedas: Ley de los Grandes Números",
+    "cmd": "import random\nimport matplotlib.pyplot as plt\n\nrng = random.Random(42)\ncaras = 0\nproporciones = []\n\nfor n in range(1, 10001):\n    if rng.randint(0, 1) == 1:\n        caras += 1\n    proporciones.append(caras / n)\n\nprint('Lanzamientos:', len(proporciones))\nprint('Caras:', caras)\nprint('Porcentaje:', round(100 * proporciones[-1], 2), '%')\nplt.plot(range(1, 10001), proporciones)\nplt.axhline(0.5, linestyle='--', label='Esperanza teórica: 50 %')\nplt.xlabel('Número de lanzamientos')\nplt.ylabel('Proporción acumulada de caras')\nplt.legend()\nplt.show()",
+    "desc": "Repite la práctica de moneda: la proporción acumulada de caras tiende a 0,5, aunque fluctúa. Pega el código en una celda de Python de Google Colab.",
+    "tone": "python"
+  },
+  {
+    "id": "stat2",
+    "group": "estadistica",
+    "context": "Google Sheets · Español",
+    "title": "1.000 tiradas de dos dados: media acumulada",
+    "cmd": "A2: =ALEATORIO.ENTRE(1;6)\nB2: =ALEATORIO.ENTRE(1;6)\nC2: =A2+B2\nD2: =PROMEDIO($C$2:C2)\n\nArrastra las cuatro fórmulas hasta la fila 1001.\nObserva cómo evoluciona D2:D1001 y compárala con 7.",
+    "desc": "Práctica en Google Sheets con configuración regional española (separador «;»). A y B simulan dados independientes y D calcula la media acumulada de las sumas.",
+    "tone": "sheets"
+  },
+  {
+    "id": "stat3",
+    "group": "estadistica",
+    "context": "Python · Google Colab",
+    "title": "Varianza y desviación estándar",
+    "cmd": "import statistics\n\ndatos = [2, 4, 6]\nmedia = statistics.mean(datos)\nvar_poblacional = statistics.pvariance(datos)\ndesv_poblacional = statistics.pstdev(datos)\n\nprint('Media:', media)\nprint('Varianza poblacional:', var_poblacional)\nprint('Desviación estándar poblacional:', desv_poblacional)\nprint('Varianza muestral:', statistics.variance(datos))",
+    "desc": "Ejemplo didáctico adicional: compara varianza poblacional (divide por N) y muestral (divide por n−1). No confundas ambas fórmulas.",
+    "tone": "python"
+  },
+  {
+    "id": "stat4",
+    "group": "estadistica",
+    "context": "Python · Google Colab",
+    "title": "240.000 lecturas: simulación de sensores y anomalías",
+    "cmd": "import random\n\nrng = random.Random(42)\nregistros = 0\nanomalías_inyectadas = 0\nanomalías_detectadas = 0\n\nfor sensor in range(10000):\n    for hora in range(24):\n        temperatura = rng.uniform(20, 80)\n        humedad = rng.uniform(30, 70)\n        vibracion = rng.uniform(0, 5)\n        presion = rng.uniform(90, 110)\n\n        if rng.random() < 0.01:\n            temperatura = 95\n            anomalías_inyectadas += 1\n\n        fuera_de_rango = (\n            not 20 <= temperatura <= 80 or\n            not 30 <= humedad <= 70 or\n            not 0 <= vibracion <= 5 or\n            not 90 <= presion <= 110\n        )\n        if fuera_de_rango:\n            anomalías_detectadas += 1\n        registros += 1\n\nprint('Registros:', registros)\nprint('Anomalías inyectadas:', anomalías_inyectadas)\nprint('Anomalías detectadas:', anomalías_detectadas)",
+    "desc": "10.000 sensores × 24 horas. Genera temperaturas (20–80), humedades (30–70), vibraciones (0–5) y presiones (90–110). Un 1 % aproximado de las lecturas se altera a propósito para detectarlas por umbrales; no son datos reales.",
+    "tone": "python"
   }
 ];
