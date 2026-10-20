@@ -1336,13 +1336,13 @@ window.YGG_BIGDATA_ITEMS = [
     "short": "Calidad, definiciones, responsabilidades y coherencia.",
     "definition": "El gobierno del dato establece políticas y prácticas para mantener información confiable, trazable y útil entre sistemas.",
     "example": "Unificar la definición de 'cliente activo' entre ventas y marketing.",
-    "caution": "ampliacion",
-    "status": "Ampliación didáctica del temario · no atribuida literalmente al profesor",
-    "source": [
+    "caution": "",
+    "status": "ampliacion",
+    "source": "Ampliación didáctica del temario · no atribuida literalmente al profesor",
+    "related": [
       "lineaje",
       "mdm"
-    ],
-    "related": []
+    ]
   },
   {
     "id": "mdm",
