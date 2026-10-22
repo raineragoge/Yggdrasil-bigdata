@@ -12,8 +12,8 @@ Proyecto web estático y multisección inspirado en el atlas personal **Yggdrasi
 
 ## Contenido de la edición V3 (22/10/2026)
 
-- **115 conceptos** (104 previos y 11 nuevos) en Árbol y Terminología: Hive, Beeline, tablas externas, particiones, MSCK, Parquet, agregaciones SQL, Bash y Cron.
-- **38 prácticas/comandos** (22 previos y 16 nuevos de ATM), filtrables por **ATM · Hive**.
+- **101 conceptos** (90 previos y 11 nuevos) en Árbol y Terminología: Hive, Beeline, tablas externas, particiones, MSCK, Parquet, agregaciones SQL, Bash y Cron.
+- **34 prácticas/comandos** (18 previos y 16 nuevos de ATM), filtrables por **ATM · Hive**.
 - Entrada del 22/10/2026 en Bitácora.
 - Guía reproducible: [ATM · Hive, Parquet y Cron](practicas/atm-hive-parquet-cron.md), con [script Bash](practicas/atm/subir_atm.sh) y [CSV](practicas/atm/transacciones_cajero_20261019.csv).
 - Verificado: 5 transacciones de ejemplo, suma de importes 630,00, ingesta manual HDFS/Hive/Parquet y script Bash ejecutado. Cron instalado y tarea diaria registrada, **primera ejecución automática aún pendiente de observar**.
@@ -75,3 +75,7 @@ Yggdrasil-bigdata/
 ├── assets/pages.css
 └── README.md
 ```
+
+## Criterio editorial (22/10/2026)
+
+Fuente principal exclusiva: los PDF de clase «Sistemas de Big Data» (Big Data 1, 79 páginas) y «Aplicaciones de Big Data» (Big Data 2, 47 páginas), más prácticas realmente realizadas. Se retiró del árbol la rama de matemáticas/probabilidad (varianza, desviación, esperanza, TCL, Markov, etc.) y las cuatro fichas de simulación estadística, que pertenecen a los apuntes de IA y no deben presentarse como parte de esta asignatura. La simulación Monte Carlo de MapReduce sí puede aparecer como ejemplo de Hadoop en el PDF de Big Data 2. Conservar conceptos transversales solo si están contextualizados en los PDF o en ejercicios de Big Data. No mezclar automáticamente temario de IA.
