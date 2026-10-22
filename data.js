@@ -1373,5 +1373,170 @@ window.YGG_BIGDATA_ITEMS = [
       "monte-carlo",
       "semilla"
     ]
+  },
+  {
+    "id": "hive",
+    "parent": "hadoop",
+    "title": "Apache Hive",
+    "short": "Motor SQL de tablas sobre archivos de Hadoop.",
+    "definition": "Permite definir tablas y ejecutar consultas tipo SQL (HiveQL) sobre datos de HDFS, mediante un motor de ejecución como MapReduce.",
+    "example": "Se consultó transacciones_atm_raw con Beeline y HiveServer2.",
+    "caution": "Hive-on-MR mostró aviso de obsolescencia, pero el ejercicio funcionó.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hdfs",
+      "mapreduce"
+    ]
+  },
+  {
+    "id": "beeline",
+    "parent": "hive",
+    "title": "Beeline y HiveServer2",
+    "short": "Interfaz JDBC de Hive.",
+    "definition": "Beeline permite consultas interactivas o ejecuciones desde Bash mediante la opción -e; requiere HiveServer2 accesible.",
+    "example": "beeline -u 'jdbc:hive2://localhost:10000/clase_bigdata' -n root -e 'SHOW PARTITIONS transacciones_atm_raw;'",
+    "caution": "Dentro de Beeline las instrucciones son HiveQL; fuera, Bash.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hive",
+      "bash-atm"
+    ]
+  },
+  {
+    "id": "hive-externa",
+    "parent": "hive",
+    "title": "Tabla externa Hive",
+    "short": "SQL sobre CSV situado en HDFS.",
+    "definition": "CREATE EXTERNAL TABLE especifica columnas, separador, partición y LOCATION para acceder a ficheros existentes.",
+    "example": "La tabla transacciones_atm_raw lee /banco/atm/raw y omite la cabecera CSV.",
+    "caution": "La carpeta HDFS y el catálogo de metadatos no son lo mismo.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hive-particiones",
+      "hdfs"
+    ]
+  },
+  {
+    "id": "hive-particiones",
+    "parent": "hive",
+    "title": "Particiones Hive",
+    "short": "Separar registros por fecha.",
+    "definition": "PARTITIONED BY (fecha STRING) permite identificar y consultar carpetas organizadas con el patrón fecha=AAAA-MM-DD.",
+    "example": "fecha=2026-10-19, confirmada con SHOW PARTITIONS.",
+    "caution": "Crear carpetas en HDFS no registra siempre las particiones automáticamente.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hive-msck"
+    ]
+  },
+  {
+    "id": "hive-msck",
+    "parent": "hive-particiones",
+    "title": "MSCK REPAIR TABLE",
+    "short": "Registrar particiones detectadas en HDFS.",
+    "definition": "Actualiza el metastore con particiones que ya existen en directorios de una tabla Hive externa.",
+    "example": "MSCK REPAIR TABLE transacciones_atm_raw;",
+    "caution": "No convierte CSV a Parquet: solo registra metadatos.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hive-externa"
+    ]
+  },
+  {
+    "id": "parquet",
+    "parent": "almacenamiento-compresion",
+    "title": "Apache Parquet",
+    "short": "Formato columnar para análisis.",
+    "definition": "Parquet almacena datos por columnas y facilita lecturas analíticas; Hive admite STORED AS PARQUET.",
+    "example": "Se creó transacciones_atm_parquet, particionada por fecha.",
+    "caution": "Es formato de archivos, no base de datos independiente.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hive",
+      "hive-overwrite"
+    ]
+  },
+  {
+    "id": "hive-overwrite",
+    "parent": "hive",
+    "title": "INSERT OVERWRITE a Parquet",
+    "short": "Recalcular una partición destino.",
+    "definition": "INSERT OVERWRITE TABLE ... PARTITION (fecha='...') SELECT ... carga el resultado SQL sustituyendo datos de esa partición.",
+    "example": "Se recargó 2026-10-19: COUNT(*)=5 y SUM(importe)=630.00.",
+    "caution": "No es un INSERT acumulativo: sustituye el contenido de la partición.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "parquet",
+      "hive-particiones"
+    ]
+  },
+  {
+    "id": "hive-agregaciones",
+    "parent": "hive",
+    "title": "Agregaciones COUNT y SUM",
+    "short": "Verificación de registros e importes.",
+    "definition": "COUNT(*) cuenta filas y SUM(importe) suma importes en HiveQL; WHERE fecha filtra la partición.",
+    "example": "5 transacciones; suma 630,00 en Parquet.",
+    "caution": "Los importes de ingresos y retiradas figuran positivos: 630 no representa saldo neto.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hive-overwrite"
+    ]
+  },
+  {
+    "id": "bash-atm",
+    "parent": "ingesta",
+    "title": "Ingesta automática mediante Bash",
+    "short": "Encadenar comprobaciones y ejecución de Hive.",
+    "definition": "El script busca un CSV diario, evita duplicación en HDFS, registra particiones Hive con Beeline y recalcula Parquet.",
+    "example": "bash /root/atm/subir_atm.sh 20261019: detectó fichero existente y actualizó Hive.",
+    "caution": "Precisa HDFS y HiveServer2 activos; solo procesa la fecha indicada.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "hdfs-script",
+      "beeline",
+      "cron"
+    ]
+  },
+  {
+    "id": "cron",
+    "parent": "scheduler",
+    "title": "Cron y Crontab",
+    "short": "Programar tareas periódicas de Linux.",
+    "definition": "Cron ejecuta comandos según 5 campos de tiempo; crontab gestiona la programación del usuario.",
+    "example": "0 1 * * * /bin/bash /root/atm/subir_atm.sh >> /root/atm/cron.log 2>&1",
+    "caution": "Tarea registrada, pero no se verificó todavía su primera ejecución real. Docker y servicios deben estar activos.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "scheduler",
+      "bash-atm"
+    ]
+  },
+  {
+    "id": "caso-atm",
+    "parent": "ingesta",
+    "title": "Práctica Big Data 2: cajeros ATM",
+    "short": "Flujo batch CSV → HDFS → Hive → Parquet → Bash → Cron.",
+    "definition": "Se generaron 5 transacciones bancarias, se cargaron en HDFS, se consultaron con tabla externa Hive, se transformaron a Parquet y se automatizó el flujo con Bash y Crontab.",
+    "example": "Datos del 19/10/2026; COUNT=5 y SUM(importe)=630.00; 22/10/2026: Cron diario registrado.",
+    "caution": "Aún no se ha observado ejecución automática de Cron; CDC y PySpark quedan para futuras prácticas.",
+    "status": "visto",
+    "source": "Práctica ATM de Big Data 2, registrada el 22/10/2026",
+    "related": [
+      "batch",
+      "hive",
+      "parquet",
+      "cron"
+    ]
   }
 ];

@@ -1,4 +1,4 @@
-# Yggdrasil-bigdata · Atlas de Big Data (V2)
+# Yggdrasil-bigdata · Atlas de Big Data (V3)
 
 Proyecto web estático y multisección inspirado en el atlas personal **Yggdrasil IA**, adaptado a las clases de Big Data.
 
@@ -7,8 +7,17 @@ Proyecto web estático y multisección inspirado en el atlas personal **Yggdrasi
 - **Árbol** (`yggdrasil.html`): jerarquía interactiva con explicaciones, ejemplos, búsquedas, enlaces a conceptos relacionados y progreso de aprendizaje.
 - **Terminología** (`terminologia.html`): glosario conectado con el árbol, filtros por rama y estado.
 - **Dudas** (`dudas.html`): dudas y conclusiones personales, **separadas del contenido del profesor**. Permite notas locales y exportación.
-- **Laboratorio** (`laboratorio.html`): 22 prácticas y comandos de Docker, Hadoop, HDFS, Python/Colab y Google Sheets. Diferencia claramente **PowerShell (host)**, **Linux (contenedor)**, **HDFS**, **Python/Colab** y **Sheets**.
+- **Laboratorio** (`laboratorio.html`): 38 prácticas y comandos de Docker, Hadoop, HDFS, Python/Colab y Google Sheets. Diferencia claramente **PowerShell (host)**, **Linux (contenedor)**, **HDFS**, **Python/Colab** y **Sheets**.
 - **Bitácora** (`bitacora.html`): sesiones registradas, notas locales y exportación.
+
+## Contenido de la edición V3 (22/10/2026)
+
+- **115 conceptos** (104 previos y 11 nuevos) en Árbol y Terminología: Hive, Beeline, tablas externas, particiones, MSCK, Parquet, agregaciones SQL, Bash y Cron.
+- **38 prácticas/comandos** (22 previos y 16 nuevos de ATM), filtrables por **ATM · Hive**.
+- Entrada del 22/10/2026 en Bitácora.
+- Guía reproducible: [ATM · Hive, Parquet y Cron](practicas/atm-hive-parquet-cron.md), con [script Bash](practicas/atm/subir_atm.sh) y [CSV](practicas/atm/transacciones_cajero_20261019.csv).
+- Verificado: 5 transacciones de ejemplo, suma de importes 630,00, ingesta manual HDFS/Hive/Parquet y script Bash ejecutado. Cron instalado y tarea diaria registrada, **primera ejecución automática aún pendiente de observar**.
+- Entorno de ATM: Docker `stupefied_ramanujan`, Ubuntu 18.04.1; no confundir con Docker `hadoop` del ejercicio de ventas. CDC y PySpark se dejan para futuras actividades.
 
 ## Contenido de la edición V2 (20/10/2026)
 
@@ -60,6 +69,9 @@ Yggdrasil-bigdata/
 ├── data.js
 ├── dudas-data.js
 ├── laboratorio-data.js
+├── practicas/atm-hive-parquet-cron.md
+├── practicas/atm/subir_atm.sh
+├── practicas/atm/transacciones_cajero_20261019.csv
 ├── assets/pages.css
 └── README.md
 ```

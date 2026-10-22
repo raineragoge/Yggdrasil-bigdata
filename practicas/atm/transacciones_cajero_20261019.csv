@@ -1,0 +1,6 @@
+id_transaccion,cajero_id,tipo_operacion,importe
+T001,ATM001,retirada,100.00
+T002,ATM002,ingreso,250.00
+T003,ATM003,retirada,50.00
+T004,ATM001,retirada,80.00
+T005,ATM002,ingreso,150.00
