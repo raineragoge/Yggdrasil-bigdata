@@ -1,81 +1,28 @@
-# Yggdrasil-bigdata · Atlas de Big Data (V3)
+# Yggdrasil Big Data · Versión V4
 
-Proyecto web estático y multisección inspirado en el atlas personal **Yggdrasil IA**, adaptado a las clases de Big Data.
+Atlas de estudio basado en los PDF oficiales del curso: **Big Data 1 · Sistemas de Big Data** (79 páginas) y **Big Data 2 · Aplicaciones de Big Data** (47 páginas), más las prácticas realmente realizadas.
 
-## Páginas
+## Secciones
 
-- **Árbol** (`yggdrasil.html`): jerarquía interactiva con explicaciones, ejemplos, búsquedas, enlaces a conceptos relacionados y progreso de aprendizaje.
-- **Terminología** (`terminologia.html`): glosario conectado con el árbol, filtros por rama y estado.
-- **Dudas** (`dudas.html`): dudas y conclusiones personales, **separadas del contenido del profesor**. Permite notas locales y exportación.
-- **Laboratorio** (`laboratorio.html`): 38 prácticas y comandos de Docker, Hadoop, HDFS, Python/Colab y Google Sheets. Diferencia claramente **PowerShell (host)**, **Linux (contenedor)**, **HDFS**, **Python/Colab** y **Sheets**.
-- **Bitácora** (`bitacora.html`): sesiones registradas, notas locales y exportación.
+- [Árbol](yggdrasil.html): **141 conceptos** clasificados por asignatura y fuente.
+- [Terminología](terminologia.html): filtro de Big Data 1 o Big Data 2.
+- [Laboratorio](laboratorio.html): **34 comandos y procedimientos** de Docker, HDFS, Hive y ATM.
+- [Bitácora](bitacora.html): evolución y evidencias del trabajo de clase.
+- [Dudas](dudas.html): cuestiones personales no atribuidas al profesor.
+- [Auditoría del temario](auditoria-temario.md): correspondencia de los dos PDF con sus páginas.
+- [Práctica completa ATM](practicas/atm-hive-parquet-cron.md): código Bash, consultas SQL y CSV.
 
-## Contenido de la edición V3 (22/10/2026)
+**Big Data 1:** 5 V, DIKW, arquitectura de datos, cloud/costes, SQL, OLTP/OLAP, ETL/ELT, batch/streaming, Parquet, CRISP-DM/SEMMA, BigQuery, gobernanza, legislación, KPIs, dashboards, Open Data, DuckDB y Linux.
 
-- **101 conceptos** (90 previos y 11 nuevos) en Árbol y Terminología: Hive, Beeline, tablas externas, particiones, MSCK, Parquet, agregaciones SQL, Bash y Cron.
-- **34 prácticas/comandos** (18 previos y 16 nuevos de ATM), filtrables por **ATM · Hive**.
-- Entrada del 22/10/2026 en Bitácora.
-- Guía reproducible: [ATM · Hive, Parquet y Cron](practicas/atm-hive-parquet-cron.md), con [script Bash](practicas/atm/subir_atm.sh) y [CSV](practicas/atm/transacciones_cajero_20261019.csv).
-- Verificado: 5 transacciones de ejemplo, suma de importes 630,00, ingesta manual HDFS/Hive/Parquet y script Bash ejecutado. Cron instalado y tarea diaria registrada, **primera ejecución automática aún pendiente de observar**.
-- Entorno de ATM: Docker `stupefied_ramanujan`, Ubuntu 18.04.1; no confundir con Docker `hadoop` del ejercicio de ventas. CDC y PySpark se dejan para futuras actividades.
+**Big Data 2:** Docker, Hadoop, HDFS, YARN, MapReduce, Hive, NiFi, Airflow, HBase, Redis, Kafka, PySpark y API de Open Data Euskadi. Práctica de cajeros ATM con Bash y Cron.
 
-## Contenido de la edición V2 (20/10/2026)
+## Reglas de clasificación
 
-- **104 conceptos** en el árbol y en Terminología (77 iniciales + 27 nuevos).
-- Rama **Matemáticas, probabilidad y estadística**: media, varianza, desviación estándar, valor esperado, Ley de los Grandes Números, TCL, Monte Carlo, cadenas de Markov y notación Big O.
-- Rama **Sistemas distribuidos y consistencia**: teorema CAP, consistencia fuerte y eventual.
-- **Almacenamiento y compresión**: RLE.
-- **Analítica, arquitectura e ingesta**: A/B Testing, CDC, MDM y detección por umbrales de anomalías en sensores.
-- **4 prácticas nuevas** en el Laboratorio: moneda (Python, 10.000 lanzamientos), dados (Google Sheets, 1.000 tiradas), varianza/desviación estándar (Python) y sensores (Python, 240.000 lecturas).
-- **Bitácora** ampliada con temario y prácticas del 19/10/2026.
-- Se respetan las cuatro dudas personales anteriores, diferenciadas del temario del profesor. Las ampliaciones técnicas están marcadas como tal.
+- **Fuente PDF:** el concepto aparece en el material y se cita la página. Eso no significa que el alumno haya ejecutado cada actividad.
+- **Práctica verificada:** las pruebas registradas se documentan en el Laboratorio y la Bitácora. En ATM se comprobó 5 transacciones y suma 630,00; el script Bash funcionó y Cron quedó registrado, pero su primer disparo automático no se ha observado.
+- **Ampliación:** cualquier contexto didáctico no escrito explícitamente en los PDF debe reconocerse como complemento.
+- **Separación con IA:** se excluye la rama de derivaciones estadísticas de IA (varianza, desviación, TCL, Markov, regresión y simulaciones didácticas); se mantiene exclusivamente estadística descriptiva básica de negocio porque Big Data 1 la incluye en su introducción. Las dudas sobre PRNG se conservan en su propia sección.
 
-## Arranque
+## Uso
 
-Abre `index.html` en un navegador moderno, o sirve la carpeta mediante `python -m http.server 8000` y entra en `http://localhost:8000/`.
-No requiere compilación ni paquetes npm; CSS y JavaScript locales.
-
-## Publicar en GitHub Pages
-
-1. El repositorio `raineragoge/Yggdrasil-bigdata` ya existe y contiene los archivos en la rama `main`.
-2. Si trabajas en un clon o copia, conserva la estructura de carpetas.
-3. En **Settings → Pages**, selecciona **Deploy from a branch**, rama `main`, carpeta `/ (root)`.
-4. Tras el despliegue, la portada será `https://raineragoge.github.io/Yggdrasil-bigdata/` (la URL funcionará solo si se habilita Pages correctamente).
-
-## Añadir contenido
-
-Los conceptos viven exclusivamente en `data.js`, usado por Árbol y Terminología. Cada entrada incluye `id`, `parent`, `title`, `short`, `definition`, `example`, `caution`, `status`, `source` y `related`.
-
-- `status: "visto"` → tema del material de clase o práctica registrada (redactado didácticamente, no como cita literal); `"ampliacion"` → complemento técnico que no se atribuye al profesor.
-- Los objetos de `dudas-data.js` son personales e independientes.
-- Los comandos de `laboratorio-data.js` deben revisarse cuando cambie el entorno de Docker.
-
-**Almacenamiento:** El progreso, las notas de dudas y la bitácora local se guardan en `localStorage`, solo en el navegador usado. No se sincronizan automáticamente con GitHub ni entre ordenadores. Exporta las anotaciones si quieres conservarlas.
-
-## Integridad de los apuntes
-
-Este proyecto distingue lo registrado de clase de las ampliaciones didácticas. Algunas descripciones están reescritas y contrastadas conceptualmente, pero no equivalen a transcripciones literales del profesor.
-
-## Organización
-
-```
-Yggdrasil-bigdata/
-├── index.html
-├── yggdrasil.html
-├── terminologia.html
-├── dudas.html
-├── laboratorio.html
-├── bitacora.html
-├── data.js
-├── dudas-data.js
-├── laboratorio-data.js
-├── practicas/atm-hive-parquet-cron.md
-├── practicas/atm/subir_atm.sh
-├── practicas/atm/transacciones_cajero_20261019.csv
-├── assets/pages.css
-└── README.md
-```
-
-## Criterio editorial (22/10/2026)
-
-Fuente principal exclusiva: los PDF de clase «Sistemas de Big Data» (Big Data 1, 79 páginas) y «Aplicaciones de Big Data» (Big Data 2, 47 páginas), más prácticas realmente realizadas. Se retiró del árbol la rama de matemáticas/probabilidad (varianza, desviación, esperanza, TCL, Markov, etc.) y las cuatro fichas de simulación estadística, que pertenecen a los apuntes de IA y no deben presentarse como parte de esta asignatura. La simulación Monte Carlo de MapReduce sí puede aparecer como ejemplo de Hadoop en el PDF de Big Data 2. Conservar conceptos transversales solo si están contextualizados en los PDF o en ejercicios de Big Data. No mezclar automáticamente temario de IA.
+Abre `index.html` en el navegador, o visita https://raineragoge.github.io/Yggdrasil-bigdata/ cuando GitHub Pages esté activado. Las marcas de progreso se guardan localmente en el navegador, no en GitHub.
